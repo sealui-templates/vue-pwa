@@ -28,8 +28,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.prod.productionSourceMap ? config.prod.devtool : false,
   output: {
 		path          : config.prod.assetsRoot,
-		filename      : utils.assetsPath('js/[name].min.js'),
-		chunkFilename : utils.assetsPath('js/[id].min.js'),
+		filename      : utils.assetsPath('js/[chunkhash].js'),
+		chunkFilename : utils.assetsPath('js/[chunkhash].js'),
 		publicPath    : config.prod.assetsPublicPath
   },
   externals : {
@@ -57,7 +57,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       parallel: true
     }),
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].min.css'),
+      filename: utils.assetsPath('css/[chunkhash].css'),
       allChunks: true,
     }),
     new OptimizeCSSPlugin({
@@ -69,7 +69,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 			filename    : config.prod.index,
 			template    : config.prod.template,
 			inject      : true,
-			hash        : true,
+			hash        : false,
 			releaseTime : (new Date()).getTime(),
       minify: {
         removeComments: true,

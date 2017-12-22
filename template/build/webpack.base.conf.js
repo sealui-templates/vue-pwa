@@ -108,13 +108,17 @@ module.exports = {
   plugins: [
   	new webpack.BannerPlugin(banner),
   	new CopyWebpackPlugin([
-			{
-				from           : path.resolve(__dirname, '../public'),
-				to             : config.prod.assetsSubDirectory,
-				ignore         : ['*.html','*.json','*.tpl','*.php','.*'],
-				copyUnmodified : true
-			}
-		]),
+      {
+        from           : path.resolve(__dirname, '../public'),
+        to             : utils.assetsPath(''),
+        ignore         : ['*.html','*.json','*.tpl','*.php','.*'],
+        copyUnmodified : true
+      },{
+        from           : path.resolve(__dirname, '../public/manifest.json'),
+        to             : utils.assetsPath('manifest.json'),
+        copyUnmodified : true
+      }
+    ])
   ],
   node: {
 		setImmediate  : false,

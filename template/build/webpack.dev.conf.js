@@ -1,4 +1,6 @@
 'use strict'
+const fs = require('fs')
+const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -71,7 +73,7 @@ module.exports = new Promise((resolve, reject) => {
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
-          messages: [chalk.green(`- Local:    http://${devWebpackConfig.devServer.host}:${port}`)],
+          messages: [`🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 `,` `,chalk.green(`- Local:    http://${devWebpackConfig.devServer.host}:${port}`),` `,`🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴 🌴  `],
         },
         onErrors: config.dev.notifyOnErrors
         ? utils.createNotifierCallback()
