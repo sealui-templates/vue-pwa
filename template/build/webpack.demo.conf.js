@@ -26,8 +26,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.demo.productionSourceMap ? config.demo.devtool : false,
   output: {
 		path          : config.demo.assetsRoot,
-		filename      : utils.assetsPath('js/[name].min.js'),
-		chunkFilename : utils.assetsPath('js/[id].min.js'),
+		filename      : utils.assetsPath('js/[chunkhash].js'),
+		chunkFilename : utils.assetsPath('js/[chunkhash].js'),
 		publicPath    : config.demo.assetsPublicPath
   },
   externals : {
@@ -55,7 +55,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       parallel: true
     }),
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].min.css'),
+      filename: utils.assetsPath('css/[contenthash].css'),
       allChunks: true,
     }),
     new OptimizeCSSPlugin({
@@ -67,7 +67,7 @@ const webpackConfig = merge(baseWebpackConfig, {
 			filename    : config.demo.index,
 			template    : config.demo.template,
 			inject      : true,
-			hash        : true,
+			hash        : false,
 			releaseTime : (new Date()).getTime(),
       minify: {
         removeComments: true,
@@ -101,8 +101,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       async: 'vendor-async',
       children: true,
       minChunks: 3
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin()
+    })
   ]
 })
 

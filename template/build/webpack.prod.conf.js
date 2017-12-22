@@ -57,7 +57,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       parallel: true
     }),
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[chunkhash].css'),
+      filename: utils.assetsPath('css/[contenthash].css'),
       allChunks: true,
     }),
     new OptimizeCSSPlugin({
@@ -104,14 +104,13 @@ const webpackConfig = merge(baseWebpackConfig, {
       children: true,
       minChunks: 3
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
     // service worker caching
     new SWPrecacheWebpackPlugin({
       cacheId: '{{ name }}',
       filename: 'service-worker.js',
-      minify: false,
+      minify: true,
       stripPrefix: 'dist/',
-      navigateFallback:  'index.html',
+      navigateFallback:  '/index.html',
       navigateFallbackWhitelist: [/^(?!\/__).*/],
       staticFileGlobsIgnorePatterns: [/\.map$/, /\.html$/, /manifest\.json$/],
       logger(message) {
