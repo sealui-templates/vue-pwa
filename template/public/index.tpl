@@ -8,8 +8,8 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta name="msapplication-TileImage" content="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/msapplication-icon-144x144.png">
-    <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.publicPath %>favicon.ico">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon.ico">
+    <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
     <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-16x16.png">
     <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/apple-touch-icon-152x152.png">
