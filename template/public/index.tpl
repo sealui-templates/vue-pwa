@@ -32,7 +32,7 @@
   <body {{#isMobile}}ontouchstart{{/isMobile}}>
     <div id="app"></div>
     <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
-    <% if (process.env.NODE_ENV !== 'development') { %>
+    <% if (process.env.NODE_ENV !== 'dev') { %>
     {{#isMobile}}
 		<script src="https://unpkg.com/fastclick@1.0.6/lib/fastclick.js"></script>
 		{{/isMobile}}
