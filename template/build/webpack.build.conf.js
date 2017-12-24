@@ -20,7 +20,7 @@ const env = {{#if_or unit e2e}}process.env.NODE_ENV === 'testing'
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
-			sourceMap  : config.[process.env.NODE_ENV]['productionSourceMap'],
+			sourceMap  : config[process.env.NODE_ENV]['productionSourceMap'],
 			extract    : true,
 			usePostCSS : true
     })
