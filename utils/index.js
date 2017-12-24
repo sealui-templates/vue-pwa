@@ -5,19 +5,19 @@ const spawn = require('child_process').spawn
 const lintStyles = ['standard', 'airbnb']
 
 function deleteall(path) {  
-    var files = [];  
-    if(fs.existsSync(path)) {  
-        files = fs.readdirSync(path);  
-        files.forEach(function(file, index) {  
-            var curPath = path + "/" + file;  
-            if(fs.statSync(curPath).isDirectory()) { // recurse  
-                deleteall(curPath);  
-            } else { // delete file  
-                fs.unlinkSync(curPath);  
-            }  
-        });  
-        fs.rmdirSync(path);  
-    }  
+    // var files = [];  
+    // if(fs.existsSync(path)) {  
+    //     files = fs.readdirSync(path);  
+    //     files.forEach(function(file, index) {  
+    //         var curPath = path + "/" + file;  
+    //         if(fs.statSync(curPath).isDirectory()) { // recurse  
+    //             deleteall(curPath);  
+    //         } else { // delete file  
+    //             fs.unlinkSync(curPath);  
+    //         }  
+    //     });  
+    //     fs.rmdirSync(path);  
+    // }  
 };
 
 /**
@@ -159,6 +159,6 @@ function sortObject(object) {
   return sortedObject
 }
 
-exports.delVuex = function delVuex(data) {
-  return deleteall(`${data.destDirName}/src/store`)
+exports.removeVuex = function removeVuex(data) {
+  return runCommand('rm', ['-rf',`${data.destDirName}/src/store`])
 }

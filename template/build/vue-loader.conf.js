@@ -3,7 +3,7 @@ const utils = require('./utils')
 const config = require('../config')
 const isProduction = process.env.NODE_ENV === 'production'
 const sourceMapEnabled = isProduction
-  ? config.prod.productionSourceMap
+  ? config[process.env.NODE_ENV]['productionSourceMap']
   : config.dev.cssSourceMap
 
 module.exports = {
