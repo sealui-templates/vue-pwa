@@ -1,12 +1,19 @@
-// https://github.com/michael-ciniawsky/postcss-load-config
+var saladConfig = require('./public/salad.config.json');
+const postcssConfig = {
+  plugins: [
+    require("postcss-import")({
 
-module.exports = {
-  "plugins": {
-    // to edit target browsers: use "browserlist" field in package.json
-    "autoprefixer": {}{{#isMobile}},
+    }),
+    require('postcss-easy-import')({
+      prefix: '_',
+      extensions: ['css','less']
+    }),
+    require('postcss-salad')(saladConfig){{#isMobile}},
     "postcss-px2rem" : {
       remUnit:100,
       remPrecision: 5
     }{{/isMobile}}
-  }
+  ]
 }
+
+module.exports = postcssConfig;
