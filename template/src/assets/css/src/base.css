@@ -3,7 +3,6 @@
 body{
   padding:0;
   margin:0;
-  background-color: var(--color);
   font-size: 62.5%;
   ont-family: -apple-system,PingFang SC,Hiragino Sans GB,Arial,Microsoft YaHei,Helvetica Neue,sans-serif;
   word-break: break-word;
