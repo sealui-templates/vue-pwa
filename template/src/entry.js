@@ -15,7 +15,7 @@ import router from './router'
 import request from 'plugins/request'
 Vue.use(request)
 {{/request}}
-
+import 'res/css/src/index'
 {{#isMobile}}
 var FastClick = require('fastclick');
 if ('addEventListener' in document) {
