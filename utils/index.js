@@ -71,7 +71,7 @@ exports.printMessage = function printMessage(data, { green, yellow }) {
 
 开始搬砖吧:
 
-  ${yellow(
+  ${green(
     `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(
       data
     )}${lintMsg(data)}npm run dev`
