@@ -38,16 +38,14 @@ function pushFile(options){
         }
       }
     }).then(function(status) {
-      if(status){
-        spinner.stop()
-        spinner.succeed(success('  [ 演示示例 ] 上传完成.'));
-        rm(options.localPath, err => {
-          if (err) throw err
-          console.log('本地目录删除成功');
-          console.log();
-          process.exit();
-        })
-      }
+      spinner.stop()
+      spinner.succeed(success('  [ 演示示例 ] 上传完成.'));
+      rm(options.localPath, err => {
+        if (err) throw err
+        console.log('本地目录删除成功');
+        console.log();
+        process.exit();
+      })
     }, function(error) {
       spinner.stop()
       spinner.fail(error('  示例 上传失败.\n'));
