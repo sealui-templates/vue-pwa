@@ -5,7 +5,7 @@ const {
   installDependencies,
   runLintFix,
   printMessage,
-  removeVuex
+  removeDir
 } = require('./utils')
 
 module.exports = {
@@ -46,6 +46,26 @@ module.exports = {
       type: 'confirm',
       message: '是否安装vuex?',
     },
+    router: {
+      type: 'confirm',
+      message: '是否安装 vue-router?',
+    },
+    less: {
+      type: 'confirm',
+      message: '是否安装 less?',
+    },
+    nprogress: {
+      type: 'confirm',
+      message: '是否安装 nprogress?',
+    },
+    balajs: {
+      type: 'confirm',
+      message: '是否安装 balajs?',
+    },
+    pushFile : {
+      type: 'confirm',
+      message: '是否安装 文件上传服务?',
+    },
     build: {
       type: 'list',
       message: 'Vue build',
@@ -62,22 +82,6 @@ module.exports = {
           short: 'runtime',
         },
       ],
-    },
-    router: {
-      type: 'confirm',
-      message: 'Install vue-router?',
-    },
-    less: {
-      type: 'confirm',
-      message: 'Install less?',
-    },
-    nprogress: {
-      type: 'confirm',
-      message: 'Install nprogress?',
-    },
-    balajs: {
-      type: 'confirm',
-      message: 'Install balajs?',
     },
     lint: {
       type: 'confirm',
@@ -180,9 +184,12 @@ module.exports = {
     const cwd = path.join(process.cwd(), data.inPlace ? '' : data.destDirName)
 
     if(!data.vuex){
-      removeVuex(data);
+      //removeVuex(data);
+      removeDir(`${data.destDirName}/src/store`)
     }
-
+    if(!data.pushFile){
+      removeDir(`${data.destDirName}/webpack_plugins/seal-node-ssh`)
+    }
     if (data.autoInstall) {
       installDependencies(cwd, data.autoInstall, green)
         .then(() => {

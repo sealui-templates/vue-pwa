@@ -10,7 +10,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const loadMinified = require('./load-minified')
 
 const env = {{#if_or unit e2e}}process.env.NODE_ENV === 'testing'
@@ -117,6 +116,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 if(process.env.NODE_ENV === 'production'){
+  const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
   webpackConfig.plugins.push(
     // service worker caching
     new SWPrecacheWebpackPlugin({
@@ -134,10 +134,18 @@ if(process.env.NODE_ENV === 'production'){
         }
         console.log(message);
       },
-      //stripPrefix: 'dist/'
     })
   )
 }
+{{#pushFile}}
+// demo环境上传文件至demo服务器
+if(process.env.NODE_ENV === 'demo' && env.hostConfig){
+  const PushFileToServerPlugin = require('../webpack_plugins/seal-node-ssh')
+  webpackConfig.plugins.push(
+    new PushFileToServerPlugin(env.hostConfig)
+  )
+}
+{{/pushFile}}
 if (config[process.env.NODE_ENV]['productionGzip']) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
